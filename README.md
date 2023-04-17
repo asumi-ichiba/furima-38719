@@ -41,28 +41,28 @@ Things you may want to cover:
 
 ### Association
 - has_many :items
-- has_many :olders
+- has_many :orders
 
 
 
 ## items テーブル
 
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| name      | string     | null: false                    |
-| content   | text       | null: false                    |
-| category  | integer    | null: false                    |
-| condition | integer    | null: false                    |
-| postage   | integer    | null: false                    |
-| area      | integer    | null: false                    |
-| number    | integer    | null: false                    |
-| price     | integer    | null: false                    |
-| user      | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| content      | text       | null: false                    |
+| category_id  | integer    | null: false                    |
+| condition_id | integer    | null: false                    |
+| postage_id   | integer    | null: false                    |
+| area_id      | integer    | null: false                    |
+| number_id    | integer    | null: false                    |
+| price        | integer    | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :items
+- has_one :item
 
 
 
@@ -77,7 +77,7 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :item
-- has_one :departs
+- has_one :depart
 
 
 
@@ -86,12 +86,13 @@ Things you may want to cover:
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | post_cord      | string     | null: false                    |
-| genre          | integer    | null: false, foreign_key: true |
+| area_id        | integer    | null: false                    |
 | municipalities | string     | null: false                    |
 | address        | string     | null: false                    |
 | building       | string     |                                |
 | telephone      | string     | null: false                    |
+| order          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :older
+- belongs_to :order
