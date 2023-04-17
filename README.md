@@ -39,14 +39,32 @@ Things you may want to cover:
 | last_name_kana     | string | null: false               |
 | birth              | date   | null: false               |
 
+### Association
+- has_many :items
+- has_many :olders
+
+
+
 ## items テーブル
 
-| Column   | Type    | Options     |
-| -------- | ------- | ----------- |
-| name     | string  | null: false |
-| text     | text    | null: false |
-| price    | integer | null: false |
-| user     | string  | null: false, foreign_key: true |
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| name      | string     | null: false                    |
+| content   | text       | null: false                    |
+| category  | integer    | null: false                    |
+| condition | integer    | null: false                    |
+| postage   | integer    | null: false                    |
+| area      | integer    | null: false                    |
+| number    | integer    | null: false                    |
+| price     | integer    | null: false                    |
+| user      | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- has_one :items
+
+
 
 ## orders テーブル
 
@@ -54,17 +72,26 @@ Things you may want to cover:
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
-| send   | references | null: false, foreign_key: true |
 
-## sends テーブル
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :departs
+
+
+
+## departs テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | post_cord      | string     | null: false                    |
-| prefectures    | string     | null: false                    |
+| genre          | integer    | null: false, foreign_key: true |
 | municipalities | string     | null: false                    |
 | address        | string     | null: false                    |
 | building       | string     |                                |
 | telephone      | string     | null: false                    |
-| user           | references | null: false, foreign_key: true |
-| item           | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :older
