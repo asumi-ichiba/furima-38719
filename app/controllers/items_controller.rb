@@ -2,12 +2,12 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index] 
 
   def index
-    @items = Item.all
+    # @items = Item.all
   end
   
-  def create
-    Tweet.create(tweet_params)
-  end
+  # def create
+    # Tweet.create(tweet_params)
+  # end
 
 
 
