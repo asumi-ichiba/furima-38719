@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
 
   describe "ユーザー新規登録" do
     context '新規登録できるとき' do
-      it 'nickname、email、password、encrypted_password、first_name、last_name、first_name_kana 、last_name_kana、birthが存在すれば登録できる' do
+      it 'nickname、email、password、password_confirmation、first_name、last_name、first_name_kana 、last_name_kana、birthが存在すれば登録できる' do
         expect(@user).to be_valid
       end
     end
@@ -36,25 +36,25 @@ RSpec.describe User, type: :model do
       end
       it "パスワードが必須であること" do
         @user.password = ''
-        @user.encrypted_password = ''
+        @user.password_confirmation = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "Password can't be blank"
       end
       it "パスワードは、6文字以上での入力が必須であること"  do
         @user.password = '12345'
-        @user.encrypted_password = '12345'
+        @user.password_confirmation = '12345'
         @user.valid?
         expect(@user.errors.full_messages).to include"Password is too short (minimum is 6 characters)"
       end
       it "パスワードは、半角英数字混合での入力が必須であること" do
         @user.password = 'aaaaaaa'
-        @user.encrypted_password = 'bbbbbbb'
+        @user.password_confirmation = 'bbbbbbb'
         @user.valid?
         expect(@user.errors.full_messages).to include "Password is invalid"
       end
       it "パスワードとパスワード（確認）は、値の一致が必須であること" do
         @user.password = '123456'
-        @user.encrypted_password = '134567'
+        @user.password_confirmation = '134567'
         @user.valid?
         expect(@user.errors.full_messages).to include"Password is invalid"
       end
