@@ -20,5 +20,8 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
-
+  
+  def item_params
+    params.require(:item).permit(:name, :content, :category_id, :condition_id, :postage_id, :area_id, :number_id, :price).merge(user_id: current_user.id)
+  end
 end
