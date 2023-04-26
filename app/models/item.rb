@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :number
 
+  validates :image        ,presence: true
   validates :name         ,presence: true
   validates :content      ,presence: true
   validates :category_id  ,presence: true, numericality: { other_than: 1 }
