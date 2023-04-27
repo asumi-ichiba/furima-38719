@@ -10,6 +10,5 @@ window.addEventListener("DOMContentLoaded", () => {
    
     taxPriceInput.innerHTML = `${salesFee}`;
     profitPriceInput.innerHTML = `${salesProfit}`;
-    console.log(inputValue);
   });
 });

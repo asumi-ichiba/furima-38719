@@ -18,5 +18,5 @@ class Item < ApplicationRecord
   validates :postage_id   ,presence: true, numericality: { other_than: 1 }
   validates :area_id      ,presence: true, numericality: { other_than: 1 }
   validates :number_id    ,presence: true, numericality: { other_than: 1 }
-  validates :price        ,presence: true, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
-end
+  validates :price, presence: true,numericality:{only_integer:true,greater_than_or_equal_to:300,less_than_or_equal_to:9999999}
+end                                              
