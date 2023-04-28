@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
 
    def show
     @item = Item.find(params[:id])
+    @categories = Category.where(id: 2..11)
    end
 
 
