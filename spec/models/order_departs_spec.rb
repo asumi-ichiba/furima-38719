@@ -27,7 +27,7 @@ RSpec.describe OrderDeparts, type: :model do
       it '郵便番号は「3桁ハイフン4桁」の半角文字列のみ保存可能' do
         @order_departs.post_cord = '1234567'
         @order_departs.valid?
-        expect(@order_departs.errors.full_messages).to include
+        expect(@order_departs.errors.full_messages).to include "Post cord is invalid"
       end
       it '都道府県の情報は2以上のidが選択さることが必須である' do
         @order_departs.area_id = 1
@@ -52,17 +52,17 @@ RSpec.describe OrderDeparts, type: :model do
       it '電話番号は10桁以上で保存可能' do
         @order_departs.telephone = '123456789'
         @order_departs.valid?
-        expect(@order_departs.errors.full_messages).to include
+        expect(@order_departs.errors.full_messages).to include "Telephone is invalid"
       end
       it '電話番号は11桁以下で保存可能' do
         @order_departs.telephone = '123456789123'
         @order_departs.valid?
-        expect(@order_departs.errors.full_messages).to include
+        expect(@order_departs.errors.full_messages).to include "Telephone is invalid"
       end
       it '電話番号は半角数値のみ保存可能' do
         @order_departs.telephone = '０８０１２３４５６７８'
         @order_departs.valid?
-        expect(@order_departs.errors.full_messages).to include
+        expect(@order_departs.errors.full_messages).to include "Telephone is invalid"
       end
       it 'user_idが紐づいていない場合は保存できない' do
         @order_departs.user_id = nil
